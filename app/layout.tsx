@@ -1,6 +1,8 @@
 import './globals.css'
 import { Inter } from 'next/font/google'
 import NavMenu from './NavMenu';
+import { SessionProvider } from 'next-auth/react';
+import { AuthProvider } from './AuthProvider';
 
 const inter = Inter({ subsets: ['latin'] })
 
@@ -17,8 +19,10 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body className={inter.className}>
+        <AuthProvider>
         <NavMenu/>
-        {children}
+          {children}
+        </AuthProvider>
       </body>
     </html>
   )
